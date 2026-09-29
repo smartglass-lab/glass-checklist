@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=600, height=600, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="Meta Ray-Ban Display 用の持ち物・手順チェックリスト。外出前・旅行・出張・キャンプなど9種のプリセットを収録。↑↓で項目をえらんでタップでチェック、進捗リングと完了演出つき。使わない項目はかくせる。依存ライブラリなし・オフライン動作。">
+  <meta name="mrbd-web-app-capable" content="yes">
+  <title>グラスチェックリスト — Glass Checklist</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div id="hud">
+      <span id="hud-left">✅ グラスチェックリスト</span>
+      <span id="hud-right"></span>
+    </div>
+
+    <!-- タイトル -->
+    <div id="title" class="screen">
+      <div class="panel">
+        <div class="logo">✅</div>
+        <div class="t-title">グラスチェックリスト</div>
+        <div class="t-sub">「あれ、持った？」を目の前で確認。</div>
+        <div class="menu-list" id="title-list"></div>
+      </div>
+    </div>
+
+    <!-- リスト一覧 -->
+    <div id="lists" class="screen hidden">
+      <div id="grid"></div>
+      <div class="hint">↑↓←→ えらぶ　タップ ひらく</div>
+    </div>
+
+    <!-- チェックリスト -->
+    <div id="check" class="screen hidden">
+      <div id="side">
+        <div id="ring-wrap">
+          <svg id="ring" viewBox="0 0 160 160" width="156" height="156">
+            <circle class="ring-bg" cx="80" cy="80" r="66"></circle>
+            <circle id="ring-fg" cx="80" cy="80" r="66"></circle>
+          </svg>
+          <div id="ring-num"><b id="ring-done">0</b><span id="ring-total">/0</span></div>
+        </div>
+        <div id="side-emoji"></div>
+        <div id="side-name"></div>
+        <div id="side-sub"></div>
+        <div id="side-hid"></div>
+      </div>
+      <div id="rows-view"><div id="rows"></div></div>
+      <div class="hint" id="check-hint"></div>
+    </div>
+
+    <!-- 完了 -->
+    <div id="done" class="screen hidden">
+      <div class="panel">
+        <div id="done-badge">✔</div>
+        <div class="t-title small" id="done-title">ぜんぶOK！</div>
+        <div class="t-sub" id="done-sub"></div>
+        <div class="menu-list" id="done-list"></div>
+      </div>
+    </div>
+
+    <!-- つかいかた -->
+    <div id="howto" class="screen hidden">
+      <div class="panel wide">
+        <div class="t-title small">つかいかた</div>
+        <ul class="howto">
+          <li>外出前・旅行・キャンプなど<b class="key">9種のリスト</b>を収録。文字入力なしですぐ使える</li>
+          <li><b class="key">↑↓</b> で項目をえらび、<b class="key">タップ</b> でチェック。次の未チェックへ自動で進む</li>
+          <li>ぜんぶチェックすると<b class="ok">完了！</b> 左のリングで進み具合がわかる</li>
+          <li>リスト最後の <b class="key">✎ 項目をかくす</b> で、使わない項目をタップでかくせる</li>
+          <li><b class="key">↺ リセット</b> はタップ2回でチェックをまとめて外す</li>
+          <li>チェックとかくした項目は端末に保存。タイトルの「つづき」で前回のリストへ</li>
+        </ul>
+        <div class="menu-list" id="howto-list"></div>
+      </div>
+    </div>
+
+    <canvas id="fx" width="600" height="600"></canvas>
+    <div id="toast"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
